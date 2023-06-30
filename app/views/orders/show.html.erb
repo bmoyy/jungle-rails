@@ -1,8 +1,11 @@
 <section class="orders-show">
-
   <header class="page-header">
-    <h1>Order #<%= @order.id %></h1>
+    <h1>Order <%= @order.id %></h1>
   </header>
+
+  <div class="orders-list">
+  <%= render '/orders/line_item' %>
+  </div>
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
