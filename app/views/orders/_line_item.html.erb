@@ -1,3 +1,21 @@
-<h1>
-Hi
-</h1>
+<tr>
+  <td>
+    <%= product.image %>
+  </td>
+  <td>
+    <h4><%= product.name %></h4>
+    <br>
+    <p><%= product.description %></p>
+  </td>
+  <td>
+    <%= humanized_money_with_symbol product.price %>
+  </td>
+  <td>
+    <div>
+    <%= quantity %>
+    </div>
+  </td>
+  <td>
+    <%= humanized_money_with_symbol product.price * quantity %>
+  </td>
+</tr>

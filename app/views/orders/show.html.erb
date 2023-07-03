@@ -2,14 +2,38 @@
   <header class="page-header">
     <h1>Order <%= @order.id %></h1>
   </header>
-
-  <div class="orders-list">
-  <%= render '/orders/line_item' %>
-  </div>
-
-  <div class="order-summary jumbotron">
+  
+  <div class="order-summary">
     <h4>Thank you for your order!</h4>
   </div>
+
+
+  <table class="table" >
+    <thead>
+      <tr>
+        <th colspan="2">Product</th>
+        <th>Unit Price</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @order.line_items.each do |line_item| %>
+        <%= render 'line_item', product: line_item.product, quantity: line_item.quantity %>
+        <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="4">
+            Total:
+            </th>
+            <th>
+              <%= humanized_money_with_symbol @order.total_cents / 100.0 %>
+              </th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
